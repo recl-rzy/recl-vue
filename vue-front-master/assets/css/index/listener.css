@@ -1,0 +1,123 @@
+/* 即时倾诉 */
+.listeners {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 24px;
+    margin-top: 16px;
+    margin-bottom: 100px;
+}
+  
+.listener {
+    background-color: white;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding-bottom: 28px;
+  
+    transition: 0.4s;
+  
+    display: grid;
+    justify-items: center;
+    line-height: 25px;
+    width: 245px;
+}
+
+.listener:hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.1);
+}
+  
+.listener .profile-img {
+    height: 83px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    position: relative;
+    margin-bottom: 50px;
+}
+  
+.listener .listener-bg1 {
+    background-image: url("~/assets/imges/1.jpg");
+}
+  
+.listener .listener-bg2 {
+    background-image: url("~/assets/imges/2.jpg");
+}
+  
+  
+.listener .listener-bg3 {
+    background-image: url("~/assets/imges/3.jpg");
+}
+  
+.listener .listener-bg4 {
+    background-image: url("~/assets/imges/4.jpg");
+}
+  
+  
+.listener img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+  
+.listener .status {
+    display: inline-block;
+    background-color: #f3f4f5;
+    height: 24px;
+    border-radius: 100px;
+    width: 60px;
+    margin-left: 100px;
+    margin-top: 20px;
+    color: rgb(25, 109, 8);
+    font-weight: 500;
+}
+  
+.listener .name {
+    color: #333;
+}
+  
+.listener .sign {
+    color: #8f8d8d;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+  
+.listener .time {
+    font-size: 14px;
+    color: #666;
+}
+  
+.listener .tips {
+    list-style: none;
+    display: flex;
+    margin-top: 15px;
+}
+  
+.listener .tip {
+    display: inline-block;
+    background-color: #f3f4f5;
+    border-radius: 100px;
+    min-width: 80px;
+    color: #666;
+    font-size: 15px;
+} 
+  
+.listener .listenBtn {
+    width: 90px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background: #0b8bff;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+  

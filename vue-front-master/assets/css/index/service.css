@@ -1,0 +1,42 @@
+/* 服务项目部分 */
+.service-prove {
+    padding-bottom: 32px;
+}
+  
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 126px 126px;
+    column-gap: 7vw;
+}
+  
+.feature {
+    display: grid;
+    grid-template-areas: 
+      "icon title" 
+      "icon content";
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 1fr 3fr;
+}
+  
+.feature img {
+    width: 70px;
+    height: 70px;
+}
+  
+.feature-content {
+    width: 17vw;
+    margin-top: 30px;
+    letter-spacing: 2px;
+    color: #8b8b8b;
+    font-size: 15px;
+    line-height: 22px;
+}
+  
+.feature-title {
+    grid-area: title;
+    width: 80px;
+    margin-top: 20px;
+    font-size: 17px;
+    letter-spacing: 2px;
+}

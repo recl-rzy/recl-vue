@@ -1,0 +1,88 @@
+/* 忆心Music */
+.music-wrap {
+    width: 100%;
+}
+
+.musics {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 24px;
+    margin-top: 26px;
+    margin-bottom: 46px;
+}
+  
+.music {
+    background-color: white;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding-bottom: 28px;
+  
+    transition: 0.4s;
+  
+    display: grid;
+    justify-items: center;
+    width: 190px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.music:hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.1);
+}
+
+.music .profile-img {
+    width: 100%;
+}
+
+.music .profile-img img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+    height: 124px;
+}
+  
+.music .playBtn {
+    width: 30px;
+    height: 30px;
+    margin-left: 100px;
+    margin-bottom: -5px;
+}
+  
+.music .avater img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+  
+.music .sign {
+    color: #333;
+    font-size: 15px;
+    letter-spacing: 1px;
+    width: 90%;
+    margin: 15px 0;
+}
+  
+.music .musicInfo {
+    list-style: none;
+}
+  
+  /* .music .musicInfo li {
+    margin-left: 50px;
+  } */
+  
+.music .avater {
+    position: absolute;
+  
+    left: 20px;
+    bottom: 19px;
+    display: flex;
+}
+  
+.music .musicInfo .name {
+    margin-left: 4px;
+    margin-top: 7px;
+    font-size: 15px;
+    color: #727272;
+}

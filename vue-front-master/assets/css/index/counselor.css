@@ -1,0 +1,103 @@
+/* 忆心咨询 */
+
+.counselor-wrap {
+    width: 100%;
+}
+
+.counselor-intro {
+    padding-top: 62px;
+    padding-bottom: 52px;
+}
+  
+.counselors {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 64px;
+    margin-top: 26px;
+}
+  
+.counselor {
+    background-color: white;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding-bottom: 28px;
+  
+    transition: 0.4s;
+  
+    display: grid;
+    justify-items: center;
+    width: 218px;
+    z-index: 100;
+}
+  
+.counselor:hover {
+    transform: translateY(-20px) scale(1.1);
+    box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.1);
+ }
+  
+.counselor .profile-img {
+    overflow: hidden;
+    width: 100%;
+}
+
+.counselor .profile-img img {
+    width: 100%;
+    height: 154px;
+    object-fit: cover;
+    object-position: top center;
+    transition: all 0.6s;
+}
+  
+.counselor .profile-img img:hover {
+    transform: scale(0.8);
+}
+  
+.counselor .name {
+    margin-top: 10px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #494949;
+}
+  
+.counselor .position {
+    color: #8f8d8d;
+    margin-top: 12px;
+    margin-bottom: 18px;
+    width: 80%;
+    font-size: 14px;
+  }
+  
+.counselor .reserBtn {
+    width: 90px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background: #0b8bff;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    outline: none;
+}
+  
+.counselor ul {
+    list-style: none;
+}
+  
+.bg-green {
+    background: url("//12598375.s61i.faiusr.com/2/AD0I5-iABhACGAAgrYT8wwUo0KDMzQcwsAk4sAE.jpg.webp") no-repeat;
+    background-size: 100% 100%;
+    width: 90%;
+    height: 170px;
+    position: absolute;
+    margin-top: 230px;
+    z-index: 0;
+}
+  
+.counselor ul li::before {
+    content: "\25CF";
+    color: #0b8bff;
+    font-size: 12px;
+    margin-right: 10px;
+}
