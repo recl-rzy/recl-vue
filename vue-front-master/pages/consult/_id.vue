@@ -34,10 +34,10 @@
                   </li>
                   <li class="li-consulter">
                     <div>
-                      <img :src="receiveUserInfo.avatar" alt="">
+                      <img :src="ChatUser.avatar" alt="">
                     </div>
                     <div class="info">
-                      <span class="name">{{receiveUserInfo.nickName}}</span>
+                      <span class="name">{{chatUser.nickName}}</span>
                       <div class="status" v-show="receiveUserStatus">
                         <span class="circle"></span>
                         在线
@@ -54,7 +54,7 @@
               <div class="current-center" id="current-center">
                 <div v-for="(item,index) in chatMsg" :key="index">
                   <div class="message-box message-position2 mbackg2" v-if="item.sendUserId != userInfo.id ">
-                    <img :src="receiveUserInfo.avatar" alt="">
+                    <img :src="ChatUser.avatar" alt="">
                     <div v-html="item.sendText" class="text"></div>
                     <div class="triangle-border tb-border2"></div>
                     <div class="triangle-border tb-background2"></div>
@@ -120,7 +120,7 @@ export default {
     init () {
 
       this.getUserInfoByCookie()
-      this.getReceiveUserInfo()
+      this.getChatUser()
 
       if (typeof (WebSocket) === 'undefined') {
         alert('您的浏览器不支持socket')
@@ -146,11 +146,7 @@ export default {
     },
     getMessage (msg) {
       console.log('后端发来了信息')
-      // let chatMsgObject = JSON.parse(msg.data.chatMsg)
-      // if(chatMsgObject != null) {
-
-      //   this.chatMsg.push(chatMsgObject)
-      // }
+      //接收消息
       let jsonObject = JSON.parse(msg.data)
       if(jsonObject.chatMsg != null) {
         this.chatMsg.push(jsonObject.chatMsg)
@@ -176,7 +172,7 @@ export default {
       let inputTextObject = document.getElementById('input-box') 
       this.sendMsg.sendText = inputTextObject.innerHTML
       this.sendMsg.sendUserId = this.userInfo.id
-      this.sendMsg.receiveUserId = this.$route.params.consult
+      this.sendMsg.receiveUserId = this.$route.params.id
       this.sendMsg.sendType = '0'
       let json = JSON.stringify(this.sendMsg)
       this.socket.send(json)
@@ -194,9 +190,9 @@ export default {
       if(userInfoStr) {
           //将用户信息字符串转json对象
           this.userInfo = JSON.parse(userInfoStr)
-          const consultId = this.$route.params.consult
-          this.getChatMsg(this.userInfo.id, consultId)
-          this.path = this.path + this.userInfo.id + '/' + consultId
+          const id = this.$route.params.id
+          this.getChatMsg(this.userInfo.id, id)
+          this.path = this.path + this.userInfo.id + '/' + id
       } else {
         this.$router.push({path: '/'})
       }
@@ -208,10 +204,10 @@ export default {
                   
           })
     },
-    getReceiveUserInfo() {
-      chatApi.getReceiveUserInfo(this.$route.params.consult)
+    getChatUser() {
+      chatApi.getChatUser(this.$route.params.id)
         .then(response => {
-          this.receiveUserInfo = response.data.data.receiveUserInfo
+          this.chatUser = response.data.data.chatUser
         })
     },
     displayEmoji() {
@@ -237,7 +233,7 @@ export default {
       chatMsg: [],
       userInfo: {},
       sendMsg: {},
-      receiveUserInfo: {},
+      chatUser: {},
       path: 'ws://localhost:8005/websocket/',
       receiveUserStatus: false,
       showEmojiBtn: false

@@ -13,5 +13,12 @@ export default {
             method: 'post',
             data: reserRecord
         })
+    },
+    pageOwnReservation(id, current, limit, reserQuery) {
+        return request({
+            url: `/eduservice/reservation-front/pageOwnReservation/${id}/${current}/${limit}`,
+            method: 'post',
+            data: reserQuery
+        })
     }
 }

@@ -30,16 +30,16 @@
             </el-form-item>
 
             <!-- 保存量表信息 -->
-            <el-form-item label="咨询师选择" prop="counselorId"
+            <el-form-item label="咨询师选择" prop="userId"
             :rules="[
-            { required: true, message: '请选择心理咨询师', trigger: 'change' }
+            { required: true, message: '请选择心理咨询师', trigger: 'blur' }
             ]">
 
-                <el-select v-model="scaleInfo.counselorId" placeholder="请选择发布者姓名">
+                <el-select v-model="scaleInfo.userId" filterable placeholder="请选择发布者姓名">
                     <el-option
-                    v-for="item in counselorList"
-                    :key="item.id"
-                    :label="item.name"
+                    v-for="(item, index) in counselorList"
+                    :key="index"
+                    :label="item.nickName"
                     :value="item.id">
                     </el-option>
                 </el-select>
@@ -194,7 +194,6 @@ export default {
             } else {
 
                 this.scaleInfo = {}
-                this.scaleInfo.userId = this.id
                 this.scaleInfo.cover = '/static/pexels-kobe-3014941.jpg'
             }
         },
@@ -223,7 +222,7 @@ export default {
                 } else {
                     this.$message({
                         type: 'error',
-                        message: '量表信息存在错误!'
+                        message: '请完善量表信息!'
                     });
                 }
             })
@@ -331,6 +330,7 @@ export default {
             scaleApi.getAllCounselor()
                 .then(response =>{
                     this.counselorList = response.data.items
+                    console.log(this.counselorList)
                 })
         },
         getScaleInfo(id) {

@@ -8,6 +8,7 @@
         <nav>
             <a href="/" class="active">首页</a>
             <a href="/chat">AI小忆</a>
+            <a href="/consult/reservation/own" v-if="userInfo.isCounselor || userInfo.isListener">用户预约</a>
             <a href="#">忆心咨询</a>
             <a :href="'/fm/' + userInfo.id ">心理FM</a>
             <a href="/scale/list">量表测评</a>
@@ -79,7 +80,7 @@ header {
     display: grid;
     padding: 0 40px;
   
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     align-items: center;
     position: relative;
     z-index: 200;

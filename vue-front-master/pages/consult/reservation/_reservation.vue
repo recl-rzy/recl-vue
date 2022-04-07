@@ -23,6 +23,12 @@
         <el-input v-model="counselor.name" style="width: 100px" size="small" disabled></el-input>
       
       </el-form-item>
+
+      <el-form-item label="你的真实姓名" prop="userName">
+        
+        <el-input v-model="reserRecord.userName" style="width: 100px"></el-input>
+      
+      </el-form-item>
       
       <el-form-item label="联系电话" prop="mobile">
         
@@ -57,8 +63,8 @@
       
       <el-form-item label="曾接收心理治疗" prop="previous">
         <el-radio-group v-model="reserRecord.previous">
-          <el-radio :label="0">是</el-radio>
-          <el-radio :label="1">否</el-radio>
+          <el-radio :label="1">是</el-radio>
+          <el-radio :label="0">否</el-radio>
         </el-radio-group>
       </el-form-item>
       
@@ -103,6 +109,10 @@ export default {
   data() {
     return {
         rules: {
+          userName: [
+            { required: true, message: '请输入你的真实姓名', trigger: 'change' },
+            { min: 1, max: 19, message: '请输入真实姓名', trigger: 'blur' }
+          ],
           mobile: [
             { required: true, message: '请输入联系电话', trigger: 'change' },
             { min: 11, max: 11, message: '请输入11位联系电话', trigger: 'blur' }
@@ -121,6 +131,7 @@ export default {
           ]
         },
         reserRecord: {
+          userName: '',
           counselorId: '',
           reservationUserId: '',
           mobile: '',

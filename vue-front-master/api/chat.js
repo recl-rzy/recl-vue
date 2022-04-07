@@ -7,9 +7,9 @@ export default {
             method: 'get'
         })
     },
-    getReceiveUserInfo(id) {
+    getChatUser(id) {
         return request({
-            url: `/educenter/member/getReceiveUserInfo/${id}`,
+            url: `/chat/user/getChatUser/${id}`,
             method: 'get'
         })
     },

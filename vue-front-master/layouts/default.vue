@@ -1,8 +1,85 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+    <div>
+        <nuxt/>
+    </div>
 </template>
+
+<script>
+import cookie from 'js-cookie'
+
+export default { 
+    mounted() {
+        this.init()
+    },
+    data() {
+        return {
+          path: "ws://localhost:8005/msgPush/"
+        }
+    },
+    methods: {
+        init() {
+            this.getUserInfoByCookie()
+        },
+        getUserInfoByCookie() {
+            var userInfoStr = cookie.get('recl_ucenter')
+            if(userInfoStr) {
+                //将用户信息字符串转json对象
+                this.userInfo = JSON.parse(userInfoStr)
+                this.path = this.path + this.userInfo.id
+                if (typeof (WebSocket) === 'undefined') {
+                  alert('您的浏览器不支持socket')
+                } else {
+                  // 实例化socket
+                  this.socket = new WebSocket(this.path)
+                  // 监听socket连接
+                  this.socket.onopen = this.open
+                  // 监听socket错误信息
+                  this.socket.onerror = this.error
+                  // 监听socket消息
+                  this.socket.onmessage = this.onMessage
+                  //
+                  this.socket.onclose = this.close
+                }
+            }
+        },
+        open () {
+          console.log('socket连接成功')
+        },
+        error () {
+          console.log('连接错误')
+        },
+        onMessage (msg) {
+          console.log('后端发来了信息:' + msg)
+          //接收消息
+          let pushMsg = JSON.parse(msg.data)
+          console.log(pushMsg)
+          if(pushMsg != null) {
+              this.pushMsgList.push(pushMsg)
+              this.showMsg(pushMsg)
+          }
+        },
+        close () {
+          console.log('socket已经关闭')
+        },
+        showMsg(msg) {
+          if(msg.ignore) {
+            this.$notify.info({
+              title: msg.title,
+              dangerouslyUseHTMLString: true,
+              message: msg.message,
+              duration: 0
+            });
+          } else {
+            this.$notify.info({
+              title: msg.title,
+              dangerouslyUseHTMLString: true,
+              message: msg.message,
+            });
+          }
+        }
+    }
+}
+</script>
 
 <style>
 /* html {

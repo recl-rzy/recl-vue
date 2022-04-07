@@ -5,7 +5,7 @@ export default {
     // 咨询师分页
     getCounselorListPage(current, limit, counselorQuery) {
         return request({
-            url: `/eduservice/edu-counselor/pageCounselorFactor/${current}/${limit}`,
+            url: `/eduservice/edu-counselor/pageCounselor/${current}/${limit}`,
             method: 'post',
             data: counselorQuery
           })
